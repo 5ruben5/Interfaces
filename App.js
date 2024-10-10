@@ -1,26 +1,37 @@
 /** IMPORTEM les llibreries necessàries */
 import React from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {ScrollView, StatusBar, StyleSheet, View,} from 'react-native';
+import { PaperProvider, Text, TextInput } from 'react-native-paper';
+const info = ["Email","Nom"];
+const nom = (textAMostrar, estilo) =>{
+  return(
+      <Text style={estilo}>{textAMostrar}</Text>
+  );
+};
+
+const dades = (prueba) =>{
+
+  return(
+    prueba.map((texto) => {
+      <TextInput
+      label={texto}
+      value={texto}
+    />
+    })
+  );
+};
 
 /** A la funció App, dins del return crearem la notra pantalla */
 const App = () => {
   return (
-    <View>
-      <StatusBar/>
-      <ScrollView>
-        <View>
-          <Text style={estils.titol}> Hola </Text>
-        </View>
-      </ScrollView>
-    </View>
+
+    <PaperProvider>
+      {nom("Rubén Martínez Martínez", estils.titol)};
+      {dades(info)};
+    </PaperProvider>
+
   );
-}
+};
 
 /** En aquesta secció, crearem els estils a aplicar als nostres components */
 const estils = StyleSheet.create({
