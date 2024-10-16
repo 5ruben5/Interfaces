@@ -4,14 +4,31 @@ import {StyleSheet} from 'react-native';
 import { PaperProvider, Text, TextInput } from 'react-native-paper';
 
 const info = ["Email", "Nom"];
-const estil = 'upv'; // Canvia a 'upv' segons vulguis
+const estil = 'florida'; // Canvia a 'upv' segons vulguis
 
+// Funció per seleccionar l'estil basat en la constant estil
+const seleccionarEstil = () => {
+  return estil === 'florida' ? estils.florida : estils.upv;
+};
+
+// Funció per seleccionar el color del text
+const seleccionarColorText = () => {
+  return estil === 'florida' ? 'white' : 'orange';
+};
+
+// Funció per seleccionar el color del placeholder
+const seleccionarPlaceholderColor = () => {
+  return estil === 'florida' ? 'white' : 'orange';
+};
+
+// Funció per mostrar el nom amb l'estil correcte
 const nom = (textAMostrar, estilo) => {
   return (
     <Text style={estilo}>{textAMostrar}</Text>
   );
 };
 
+// Funció per generar els inputs amb els colors i estils dinàmics
 const dades = (prueba, colorText, placeholderColor) => {
   return (
     prueba.map((texto, index) => (
@@ -28,10 +45,10 @@ const dades = (prueba, colorText, placeholderColor) => {
 
 /** A la funció App, dins del return crearem la nostra pantalla */
 const App = () => {
-  // Determinem l'estil a aplicar i els colors dinàmics en funció de la constant 'estil'
-  const estilSeleccionat = estil === 'florida' ? estils.florida : estils.upv;
-  const colorText = estil === 'florida' ? 'white' : 'orange';
-  const placeholderColor = estil === 'florida' ? 'white' : 'orange';
+  // Utilitzem les funcions per obtenir els estils i els colors
+  const estilSeleccionat = seleccionarEstil();
+  const colorText = seleccionarColorText();
+  const placeholderColor = seleccionarPlaceholderColor();
 
   return (
     <PaperProvider>
