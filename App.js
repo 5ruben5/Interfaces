@@ -3,6 +3,7 @@ import React from 'react';
 import {ScrollView, StatusBar, StyleSheet, View,} from 'react-native';
 import { PaperProvider, Text, TextInput } from 'react-native-paper';
 const info = ["Email","Nom"];
+const estil = 'florida';
 const nom = (textAMostrar, estilo) => {
   return (
     <Text style={estilo}>{textAMostrar}</Text>
@@ -23,9 +24,12 @@ const dades = (prueba) => {
 
 /** A la funció App, dins del return crearem la nostra pantalla */
 const App = () => {
+
+  const estilSeleccionat = estil === 'florida' ? estils.florida : estils.upv;
+
   return (
     <PaperProvider>
-      {nom("Rubén Martínez Martínez", estils.titol)}
+      {nom("Rubén Martínez Martínez", estilSeleccionat)}
       {dades(info)}
     </PaperProvider>
   );
@@ -55,7 +59,7 @@ const estils = StyleSheet.create({
     textAlign: 'left',
     color: 'grey',
     },
-    florida: {
+  florida: {
     backgroundColor: 'red',
     fontSize: 12,
     fontWeight: '600',
