@@ -7,7 +7,27 @@ const info = ["Email", "Nom"];
 const estil = 'florida'; // Canvia a 'upv' segons vulguis
 const isAdmin = true; // Canvia a true si és administrador
 
+const moduls2Dam = [
+  { nom: 'DIN', professor: 'Manel', hores: 120 },
+  { nom: 'ADA', professor: 'Roberto', hores: 120 },
+  { nom: 'PMDM', professor: 'Paco', hores: 100 },
+  { nom: 'PSP', professor: 'Roberto', hores: 60 },
+  { nom: 'SGE', professor: 'Belén', hores: 100 },
+  { nom: 'Anglés', professor: 'Caterina', hores: 40 },
+  { nom: 'EIE', professor: 'Ana', hores: 60 },
+];
   
+
+// Funció per mostrar cada mòdul amb els estils aplicats
+const mostrarModuls = () => {
+  return moduls2Dam.map((modul, index) => (
+    <View key={index} style={estils.modulContainer}>
+      <Text style={estils.nomModul}>{modul.nom}</Text>
+      <Text style={estils.professor}>{modul.professor}</Text>
+      <Text style={estils.hores}>{modul.hores} hores</Text>
+    </View>
+  ));
+};
 
 // Funció per seleccionar l'estil basat en la constant estil
 const seleccionarEstil = () => {
@@ -71,6 +91,7 @@ const App = () => {
         {nom("Rubén Martínez Martínez", estilSeleccionat)}
         {dades(info, colorText, placeholderColor)}
         {mostrarBotoInformes()}
+        {mostrarModuls()}
       </View>
     </PaperProvider>
   );
@@ -97,6 +118,30 @@ const estils = StyleSheet.create({
     padding: 4,
     paddingLeft: 12,
     textAlign: 'left',
+  },
+  container: {
+    padding: 16,
+  },
+  modulContainer: {
+    marginBottom: 16,
+    padding: 16,
+    backgroundColor: '#f0f0f0', // Color de fons per al mòdul
+    borderRadius: 8,
+  },
+  nomModul: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'blue', // Color per al nom del mòdul
+    marginBottom: 4,
+  },
+  professor: {
+    fontSize: 16,
+    color: 'green', // Color per al nom del professor
+    marginBottom: 4,
+  },
+  hores: {
+    fontSize: 16,
+    color: 'red', // Color per a les hores
   },
 });
 
