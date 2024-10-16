@@ -1,10 +1,13 @@
 /** IMPORTEM les llibreries necessàries */
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import { PaperProvider, Text, TextInput } from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import { PaperProvider, Text, TextInput, Button, IconButton } from 'react-native-paper';
 
 const info = ["Email", "Nom"];
 const estil = 'florida'; // Canvia a 'upv' segons vulguis
+const isAdmin = true; // Canvia a true si és administrador
+
+  
 
 // Funció per seleccionar l'estil basat en la constant estil
 const seleccionarEstil = () => {
@@ -43,6 +46,18 @@ const dades = (prueba, colorText, placeholderColor) => {
   );
 };
 
+// Funció per mostrar el botó d'informes només si isAdmin és true
+const mostrarBotoInformes = () => {
+  if (isAdmin) {
+    return (
+      <Button icon="format-list-bulleted" mode="contained" onPress={() => console.log('Informes')}>
+        Informes
+      </Button>
+    );
+  }
+  return null; // No mostrar res si no és admin
+};
+
 /** A la funció App, dins del return crearem la nostra pantalla */
 const App = () => {
   // Utilitzem les funcions per obtenir els estils i els colors
@@ -52,8 +67,11 @@ const App = () => {
 
   return (
     <PaperProvider>
-      {nom("Rubén Martínez Martínez", estilSeleccionat)}
-      {dades(info, colorText, placeholderColor)}
+      <View style={{ padding: 16 }}>
+        {nom("Rubén Martínez Martínez", estilSeleccionat)}
+        {dades(info, colorText, placeholderColor)}
+        {mostrarBotoInformes()}
+      </View>
     </PaperProvider>
   );
 };
